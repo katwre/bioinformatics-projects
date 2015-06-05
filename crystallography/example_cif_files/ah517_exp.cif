@@ -1,0 +1,158 @@
+data_xcalibur
+_audit_creation_date
+;
+'Mon Dec 03 13:54:12 2012'
+;
+_audit_creation_method
+;
+CrysAlisPro, Oxford Diffraction Ltd.,
+Version 1.171.35.19 (release 27-10-2011 CrysAlis171 .NET)
+(compiled Oct 27 2011,15:02:11)
+;
+_computing_data_collection
+;
+CrysAlisPro, Agilent Technologies,
+Version 1.171.35.19 (release 27-10-2011 CrysAlis171 .NET)
+(compiled Oct 27 2011,15:02:11)
+;
+_computing_cell_refinement
+;
+CrysAlisPro, Agilent Technologies,
+Version 1.171.35.19 (release 27-10-2011 CrysAlis171 .NET)
+(compiled Oct 27 2011,15:02:11)
+;
+_computing_data_reduction
+;
+CrysAlisPro, Agilent Technologies,
+Version 1.171.35.19 (release 27-10-2011 CrysAlis171 .NET)
+(compiled Oct 27 2011,15:02:11)
+;
+_cell_length_a                  8.2965(6) 
+_cell_length_b                  9.2314(6) 
+_cell_length_c                  10.5063(7) 
+_cell_angle_alpha               82.770(5) 
+_cell_angle_beta                71.564(6) 
+_cell_angle_gamma               65.425(7) 
+_cell_volume                    694.20(8) 
+_cell_measurement_reflns_used   8560
+_cell_measurement_theta_min     2.0392
+_cell_measurement_theta_max     32.2033
+_cell_oxdiff_length_a                  8.2965(6) 
+_cell_oxdiff_length_b                  9.2314(6) 
+_cell_oxdiff_length_c                  10.5063(7) 
+_cell_oxdiff_angle_alpha               82.770(5) 
+_cell_oxdiff_angle_beta                71.564(6) 
+_cell_oxdiff_angle_gamma               65.425(7) 
+_cell_oxdiff_volume                    694.20(8) 
+_cell_oxdiff_measurement_reflns_used   8560
+_exptl_absorpt_correction_T_min                   0.95068
+_exptl_absorpt_correction_T_max                   1.00000
+_exptl_absorpt_correction_type            'multi-scan'
+_exptl_absorpt_process_details
+;
+CrysAlisPro, Agilent Technologies,
+Version 1.171.35.19 (release 27-10-2011 CrysAlis171 .NET)
+(compiled Oct 27 2011,15:02:11)
+Empirical absorption correction using spherical harmonics,
+ implemented in SCALE3 ABSPACK scaling algorithm.
+;
+_diffrn_radiation_wavelength 0.7107
+_diffrn_radiation_type 'Mo K\a'
+_diffrn_radiation_source 'Enhance (Mo) X-ray Source'
+_diffrn_radiation_monochromator 'graphite'
+_diffrn_measurement_device_type 'Xcalibur, Opal'
+_diffrn_detector_area_resol_mean 8.4441
+_diffrn_reflns_number 16286
+_diffrn_reflns_av_R_equivalents 0.0359
+_diffrn_reflns_av_sigmaI/netI 0.0754
+_diffrn_reflns_limit_h_min -12
+_diffrn_reflns_limit_h_max 12
+_diffrn_reflns_limit_k_min -13
+_diffrn_reflns_limit_k_max 13
+_diffrn_reflns_limit_l_min -15
+_diffrn_reflns_limit_l_max 15
+_diffrn_reflns_theta_min 2.0392
+_diffrn_reflns_theta_max 32.2033
+_diffrn_orient_matrix_UB_11       0.0318053000
+_diffrn_orient_matrix_UB_12      -0.0342027000
+_diffrn_orient_matrix_UB_13       0.0564120000
+_diffrn_orient_matrix_UB_21       0.0707827000
+_diffrn_orient_matrix_UB_22      -0.0659046000
+_diffrn_orient_matrix_UB_23      -0.0400618000
+_diffrn_orient_matrix_UB_31       0.0603572000
+_diffrn_orient_matrix_UB_32       0.0403177000
+_diffrn_orient_matrix_UB_33      -0.0166508000
+_diffrn_measurement_details
+;
+#__ type_ start__ end____ width___ exp.time_
+  1 omega   -1.00   95.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195   78.0000   30.0000 96
+
+#__ type_ start__ end____ width___ exp.time_
+  2 omega   59.00  102.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195  179.0000  -90.0000 43
+
+#__ type_ start__ end____ width___ exp.time_
+  3 omega  -24.00   74.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195 -100.0000  -90.0000 98
+
+#__ type_ start__ end____ width___ exp.time_
+  4 omega   56.00   82.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195  179.0000   30.0000 26
+
+#__ type_ start__ end____ width___ exp.time_
+  5 omega    4.00   70.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195 -100.0000  120.0000 66
+
+#__ type_ start__ end____ width___ exp.time_
+  6 omega -102.00   26.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -      -31.3695    0.0000   60.0000 128
+
+#__ type_ start__ end____ width___ exp.time_
+  7 omega   34.00  110.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195  179.0000  150.0000 76
+
+#__ type_ start__ end____ width___ exp.time_
+  8 omega   -3.00  103.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195   78.0000  150.0000 106
+
+#__ type_ start__ end____ width___ exp.time_
+  9 omega  -43.00   62.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195  -38.0000  120.0000 105
+
+#__ type_ start__ end____ width___ exp.time_
+ 10 omega   -3.00  103.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195   78.0000  -60.0000 106
+
+#__ type_ start__ end____ width___ exp.time_
+ 11 omega    6.00  101.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195   57.0000  -90.0000 95
+
+#__ type_ start__ end____ width___ exp.time_
+ 12 omega  -40.00   37.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195  -57.0000   30.0000 77
+
+#__ type_ start__ end____ width___ exp.time_
+ 13 omega   34.00   67.00   1.0000   25.0000
+omega____ theta____ kappa____ phi______ frames
+    -       30.1195  179.0000   60.0000 33
+
+;
+_diffrn_measurement_method '\w scans'
+_symmetry_space_group_name_H-M 'P -1'
+_symmetry_cell_setting triclinic
+_reflns_odcompleteness_completeness		100.00
+_reflns_odcompleteness_theta		26.32
+_reflns_odcompleteness_iscentric		1
