@@ -1,0 +1,40 @@
+<tool id="mRNA_Markup_Summary" name="mRNA_Markup_Summary">
+  <description> - summary for mRNA Markup procedure.</description>
+  <command interpreter="python">Summary.py $output $input_data $VC $BC $RA $FL $not_FL $PC $not_PC $AA $CD</command>
+  <inputs>
+    <param format="fasta" name="input_data" type="data" label="Query file"/>
+    <param format="fasta" name="VC" type="data" label="Potential vector-contaminated sequences file"/>
+    <param format="fasta" name="BC" type="data" label="Potential bacterial-contaminated sequences"/>
+    <param format="fasta" name="RA" type="data" label="Sequences matching the ReferenceDB"/>
+    <param format="fasta" name="FL" type="data" label="Potential full-length coding sequences"/>
+    <param format="fasta" name="not_FL" type="data" label="Not full-length coding sequences (second output file from FL partition)"/>
+    <param format="fasta" name="PC" type="data" label="Potential chimeric sequences"/>
+    <param format="fasta" name="not_PC" type="data" label="Not chimeric sequences (second output file from PC partition)"/>
+    <param format="fasta" name="AA" type="data" label="Sequences matching the AllProteinDB"/>
+    <param format="fasta" name="CD" type="data" label="Sequences matching the ProteinDomainDB"/>
+  </inputs>
+  <outputs>
+    <data format="text" name="output" label="mRNA markup report"/>
+  </outputs>
+
+  <tests>
+    <test>
+      <param name="input" value="input.fa"/>
+      <output name="out_file1" file="output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+    
+**What it does**   
+    
+This tool performs the final step of the mRNA_Markup workflow.
+It produces a summary report detailing
+how many sequences were matched during each step as well
+as how many potentially novel sequences remain. 
+The matched and unmatched sequences themselves are presented as well.
+Input consists of the FASTA files produced in the previous steps.
+
+  </help>
+
+</tool>

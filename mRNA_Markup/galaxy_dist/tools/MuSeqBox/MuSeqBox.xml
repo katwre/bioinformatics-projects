@@ -1,0 +1,134 @@
+<tool id="museqbox_tool" name="MuSeqBox">
+  <description>is a program designed for multi-query sequence BLAST output examination</description>
+  <command interpreter="python">MuSeqBox.py $input $output1 -n $n_option.n -s $s_option.s -F $F_option.F -M $M_option.M $q</command>
+
+  <inputs>
+      <param name="input" type="data" format="text" label="MuSeqBox input"/>
+      
+      <conditional name="n_option">
+            <param name="n_option_selector" type="select" label="-n Option">
+              <option value="basic" selected="True">Hide n Option</option>
+              <option value="advanced">Show n Options</option>
+            </param>
+            <when value="basic">
+	      <param name="n" type="hidden" value="-" />
+	    </when>
+	    <when value="advanced">
+	      <param name="n" type="integer" value="1" label="Select the first 'nhits' from the BLAST hit list for each query" help="default: select all hits (up to 2000)"/>
+	    </when>
+      </conditional>
+      
+      <conditional name="s_option">
+            <param name="s_option_selector" type="select" label="-s Option">
+              <option value="basic" selected="True">Hide s Options</option>
+              <option value="advanced">Show s Options</option>
+            </param>
+            <when value="basic">
+	     <param name="s" type="hidden" value="-" />
+	    </when>
+	    <when value="advanced">
+		<param name="s" type="integer" value="1" label="Select the best 'nhsps' HSPs from each hit" />	    
+		</when>
+      </conditional>
+      
+      <conditional name="F_option">
+            <param name="F_option_selector" type="select" label="-F Option">
+              <option value="basic" selected="True">Hide F Options</option>
+              <option value="advanced">Show F Options</option>
+            </param>
+            <when value="basic">
+	     <param name="F" type="hidden" value="-" />
+	    </when>
+	    <when value="advanced">
+		<param name="F" type="text" value="5 5 10 10 90 60" label="Select hits which likely correspond to full-length, 5'- or 3'- coding sequences according to the criteria." />	    
+		</when>
+      </conditional>
+      
+      <conditional name="M_option">
+            <param name="M_option_selector" type="select" label="-M Option">
+              <option value="basic" selected="True">Hide M Options</option>
+              <option value="advanced">Show M Options</option>
+            </param>
+            <when value="basic">
+	     <param name="M" type="hidden" value="-" />
+	    </when>
+	    <when value="advanced">
+		<param name="M" type="text" value="10 50" label="Indicate potential chimeric queries" />	    
+		</when>
+      </conditional>
+      
+      <param name="q" type="boolean" label="print the query IDs of queries with no BLAST hits?" truevalue="-q" falsevalue="" checked="false" />
+	
+  </inputs>
+  <outputs>
+       <data format="text" name="output1"/>
+  </outputs>    
+  <tests>
+    <test>
+      <param name="input" value="blast_output.txt"/>
+      <output name="output1" file="museqbox_output.txt"/>
+    </test>
+  </tests>
+  <help>
+
+**What it does**   
+    
+ MuSeqBox is a program designed for multi-query sequence BLAST output examination.
+ It examines the BLAST output, extracts the informative parameters of BLAST hits,
+ and saves them in tabular form in either text or HTML format. The hit tables are
+ optionally further analyzed with the program to produce subsets of BLAST hits
+ according to user-specified criteria. In particular, BLASTX output may be further
+ analyzed to indicate queries that might potentially be alternatively spliced 
+ transcripts (e.g., an extra large segment of insertion or deletion),
+ full-length coding sequences, or contain repeat structures.
+ 
+-----
+
+**Usage**    
+(only selected options)
+
+ '-i infname'     
+                read input from file 'infname'.
+ '-n nhits'       
+                select the first 'nhits' from the BLAST hit list for each query.
+                default   select all hits (up to 2000)
+ '-s nhsps'       
+                select the best 'nhsps' HSPs from each hit.
+                default   10000 (=maximum allowed)
+ '-q'             
+                print the query IDs of queries with no BLAST hits.
+ '-o outfname'    
+                write output to file 'outfname'. An extension name '.html' will
+                be added if option '-h' is specified.
+                default   standard output
+                
+ '-F v5s v3s v5q v3q scv qcv outffl'
+                Full-length coding sequences.
+                Select hits which likely correspond to full-length, 5' or 3'
+                coding sequences according to the criteria
+                'v5s', max variance in subject at starting position of 5' end,
+                'v3s', max variance in subject at ending position of 3' end,
+                'v5q', max variance in query at starting position of 5' end,
+                'v3q', max variance in query at ending position of 3' end,
+                'scv', minimal cumulative coverage of the matched subject,
+                'qcv', minimal cumulative coverage of the query.
+                Write the output to file 'outffl'.
+ '-M mov mex'     
+                Indicate potential chimeric queries.
+                Potential chimeric queries have two hits to different subject
+                sequences, with the hits overlapping at most 'mov' positions and
+                the endpoint of the second hit extending at least 'mex' positions
+                beyond the endpoint of the first hit.
+
+-----
+
+**References**  
+
+(1) Xing, L. and Brendel, V. (2000)  MuSeqBox: a program for multi-query sequence BLAST output examination. Bioinformatics 17, 744-745.
+
+(2) Altschul, S.F., Madden, T.L., Schaffer, A.A., Zhang, J., Zhang, Z., Miller, W. and Lipman, D.J. (1997)   Gapped BLAST and PSI-BLAST: a new generation of protein database search programs.  Nucl. Acids Res. 25, 3389-3402.
+
+
+  </help>
+
+</tool> 

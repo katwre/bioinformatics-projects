@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<tool id="partition" name="MuSeqBox_Partition">
+  <description>implementation of MuSeqBox_Partition procedure</description>
+  <command interpreter="python">MuSeqBox_Partition.py $input $input_dataset $out_positive_file $out_negative_file</command>
+
+  <inputs>
+        <param name="input" type="data" format="text" label="input"/>
+	<param name="input_dataset" type="data" format="fasta" label="input_dataset"/>
+  </inputs>
+  <outputs>
+       <data format="fasta" name="out_positive_file" />
+       <data format="fasta" name="out_negative_file" />
+  </outputs>    
+  <tests>
+    <test>
+      <param name="input" value="blast_output.txt"/>
+      <output name="out_file1" file="museqbox_partition_output.txt"/>
+    </test>
+  </tests>
+
+  <help>
+
+**What it does**   
+    
+  This program separates portions of a sequence that produced blast hits from those that did not.
+  Input consists of a MuSeqBox output file and a file containing
+  the query sequences for the BLAST whose output was processed by MuSeqBox. Output consists
+  of two FASTA files, one containing the sequences which correspond to BLAST hits, and one
+  containing the sequences which do not.
+  
+  
+  
+  </help>
+
+</tool> 

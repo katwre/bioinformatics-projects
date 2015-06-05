@@ -1,0 +1,87 @@
+<tool id="ncbi_blastn_wrapper" name="BLAST+ blastn" version="0.0.1">
+    <description>Search nucleotide database with nucleotide query sequence(s)</description>
+    <command>
+## The command is a Cheetah template which allows some Python based syntax.
+## Lines starting hash hash are comments. Galaxy will turn newlines into spaces
+blastn
+-query "$query"
+-db "$db_opts.database"
+-task blastn
+-evalue $evalue_cutoff
+-out $output1
+$out_format
+    </command>
+    <inputs>
+        <param name="query" type="data" format="fasta" label="Nucleotide query sequence(s)"/> 
+        <conditional name="db_opts">
+            <param name="db_opts_selector" type="select" label="Subject database/sequences">
+              <option value="db" selected="True">BLAST Database</option>
+            </param>
+            <when value="db">
+                <param name="database" type="select" label="Nucleotide BLAST database">
+                    <options from_file="blastdb.loc">
+                      <column name="name" index="0"/>
+                      <column name="value" index="3"/>
+                    </options>
+                </param>
+            </when>
+        </conditional>
+        <param name="evalue_cutoff" type="float" size="15" value="0.001" label="set expectation value cutoff" />
+        <param name="out_format" type="select" label="Output format">
+            <option value="-outfmt 6" selected="True">Tabular</option>
+            <option value="-outfmt 5">BLAST XML</option>
+            <option value="-outfmt 0">Pairwise text</option>
+            <option value="-outfmt 0 -html">Pairwise HTML</option>
+            <option value="-outfmt 2">Query-anchored text</option>
+            <option value="-outfmt 2 -html">Query-anchored HTML</option>
+            <option value="-outfmt 4">Flat query-anchored text</option>
+            <option value="-outfmt 4 -html">Flat query-anchored HTML</option>
+        </param>
+    </inputs>
+    <outputs>
+        <data name="output1" format="tabular" label="${blast_type.value_label} on ${db_opts.db_opts_selector}">
+            <change_format>
+                <when input="out_format" value="-outfmt 0" format="txt"/>
+                <when input="out_format" value="-outfmt 0 -html" format="html"/>
+                <when input="out_format" value="-outfmt 2" format="txt"/>
+                <when input="out_format" value="-outfmt 2 -html" format="html"/>
+                <when input="out_format" value="-outfmt 4" format="txt"/>
+                <when input="out_format" value="-outfmt 4 -html" format="html"/>
+                <when input="out_format" value="-outfmt 5" format="blastxml"/>
+            </change_format>
+        </data>
+    </outputs>
+    <requirements>
+        <requirement type="binary">blastn</requirement>
+    </requirements>
+    <tests>
+        <test>
+            <param name="input_query" value="wrapper_test1.fa" ftype="fasta"/>
+            <param name="database" value="phiX" />
+            <param name="out_format" value="6" />
+            <output name="output1" file="wrapper_test1.out"/> 
+        </test>
+    </tests>
+
+    <help>
+
+**What it does**
+
+Search a *nucleotide database* using a *nucleotide query*,
+using the NCBI BLAST+ blastn command line tool.
+
+**References**
+
+Altschul, S.F., Gish, W., Miller, W., Myers, E.W. Lipman, D.J. (1990) "Basic local alignment search tool." J. Mol. Biol. 215:403-410. PubMed
+Gish, W. States, D.J. (1993) "Identification of protein coding regions by database similarity search." Nature Genet. 3:266-272
+
+Madden, T.L., Tatusov, R.L. Zhang, J. (1996) "Applications of network BLAST server" Meth. Enzymol. 266:131-141.
+
+Altschul, S.F., Madden, T.L., Schäffer, A.A., Zhang, J., Zhang, Z., Miller, W. Lipman, D.J. (1997) "Gapped BLAST and PSI-BLAST: a new generation of protein database search programs." Nucleic Acids Res. 25:3389-3402.
+
+Zhang Z., Schwartz S., Wagner L., Miller W. (2000), "A greedy algorithm for aligning DNA sequences", J Comput Biol 2000; 7(1-2):203-14.
+
+Zhang, J. Madden, T.L. (1997) "PowerBLAST: A new network BLAST application for interactive or automated sequence analysis and annotation." Genome Res. 7:649-656.
+
+    </help>
+</tool>

@@ -1,0 +1,674 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "mRNA_Markup", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 258, 
+                "top": 624
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "id": 1, 
+            "input_connections": {
+                "query": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "name": "BLAST+ blastn", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 650, 
+                "top": 307
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "ncbi_blastn_wrapper", 
+            "tool_state": "{\"out_format\": \"\\\"-outfmt 0\\\"\", \"evalue_cutoff\": \"\\\"1e-20\\\"\", \"__page__\": 0, \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"db\\\", \\\"__current_case__\\\": 0, \\\"database\\\": \\\"/home/kasia/Pulpit/kasia/KASIA/UW-bioinf/Architektura_projektow_bioinf/projekt_architektura/bazy/UniVec\\\"}\", \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"ungapped\\\": \\\"\\\", \\\"filter_query\\\": \\\"\\\", \\\"word_size\\\": \\\"\\\", \\\"__current_case__\\\": 0, \\\"strand\\\": \\\"\\\", \\\"max_hits\\\": \\\"\\\"}\", \"blast_type\": \"\\\"blastn\\\"\", \"query\": \"null\"}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 1, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "text"
+                }
+            ], 
+            "position": {
+                "left": 1032, 
+                "top": 297
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "museqbox_tool", 
+            "tool_state": "{\"__page__\": 0, \"q\": \"\\\"True\\\"\", \"M_option\": \"{\\\"M\\\": \\\"-\\\", \\\"M_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"s_option\": \"{\\\"s\\\": \\\"-\\\", \\\"s_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"n_option\": \"{\\\"n_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"n\\\": \\\"-\\\"}\", \"input\": \"null\", \"F_option\": \"{\\\"F_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"F\\\": \\\"-\\\"}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "id": 3, 
+            "input_connections": {
+                "input": {
+                    "id": 2, 
+                    "output_name": "output1"
+                }, 
+                "input_dataset": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox_Partition", 
+            "outputs": [
+                {
+                    "name": "out_positive_file", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "out_negative_file", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1431, 
+                "top": 280
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "partition", 
+            "tool_state": "{\"input_dataset\": \"null\", \"input\": \"null\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "id": 4, 
+            "input_connections": {
+                "query": {
+                    "id": 3, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "BLAST+ blastn", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 642, 
+                "top": 490
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "ncbi_blastn_wrapper", 
+            "tool_state": "{\"out_format\": \"\\\"-outfmt 0\\\"\", \"evalue_cutoff\": \"\\\"1e-20\\\"\", \"__page__\": 0, \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"db\\\", \\\"__current_case__\\\": 0, \\\"database\\\": \\\"/home/kasia/Pulpit/kasia/KASIA/UW-bioinf/Architektura_projektow_bioinf/projekt_architektura/bazy/BacteriaDB\\\"}\", \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"ungapped\\\": \\\"\\\", \\\"filter_query\\\": \\\"\\\", \\\"word_size\\\": \\\"\\\", \\\"__current_case__\\\": 0, \\\"strand\\\": \\\"\\\", \\\"max_hits\\\": \\\"\\\"}\", \"blast_type\": \"\\\"blastn\\\"\", \"query\": \"null\"}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "id": 5, 
+            "input_connections": {
+                "input": {
+                    "id": 4, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "text"
+                }
+            ], 
+            "position": {
+                "left": 1029, 
+                "top": 481
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "museqbox_tool", 
+            "tool_state": "{\"__page__\": 0, \"q\": \"\\\"True\\\"\", \"M_option\": \"{\\\"M\\\": \\\"-\\\", \\\"M_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"s_option\": \"{\\\"s\\\": \\\"-\\\", \\\"s_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"n_option\": \"{\\\"n_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"n\\\": \\\"-\\\"}\", \"input\": \"null\", \"F_option\": \"{\\\"F_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"F\\\": \\\"-\\\"}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "id": 6, 
+            "input_connections": {
+                "input": {
+                    "id": 5, 
+                    "output_name": "output1"
+                }, 
+                "input_dataset": {
+                    "id": 3, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox_Partition", 
+            "outputs": [
+                {
+                    "name": "out_positive_file", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "out_negative_file", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1445, 
+                "top": 467
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "partition", 
+            "tool_state": "{\"input_dataset\": \"null\", \"input\": \"null\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "7": {
+            "annotation": "", 
+            "id": 7, 
+            "input_connections": {
+                "query": {
+                    "id": 6, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "BLAST+ blastx", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 610, 
+                "top": 769
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "ncbi_blastx_wrapper", 
+            "tool_state": "{\"out_format\": \"\\\"-outfmt 6\\\"\", \"__page__\": 0, \"evalue_cutoff\": \"\\\"1e-05\\\"\", \"adv_opts\": \"{\\\"matrix\\\": \\\"\\\", \\\"adv_opts_selector\\\": \\\"basic\\\", \\\"ungapped\\\": \\\"\\\", \\\"filter_query\\\": \\\"\\\", \\\"word_size\\\": \\\"\\\", \\\"__current_case__\\\": 0, \\\"strand\\\": \\\"\\\", \\\"max_hits\\\": \\\"\\\"}\", \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"db\\\", \\\"__current_case__\\\": 0, \\\"database\\\": \\\"/home/kasia/Pulpit/kasia/KASIA/UW-bioinf/Architektura_projektow_bioinf/projekt_architektura/bazy/RefProtDB\\\"}\", \"query\": \"null\"}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "8": {
+            "annotation": "", 
+            "id": 8, 
+            "input_connections": {
+                "input": {
+                    "id": 7, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "text"
+                }
+            ], 
+            "position": {
+                "left": 977, 
+                "top": 778
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "museqbox_tool", 
+            "tool_state": "{\"__page__\": 0, \"q\": \"\\\"True\\\"\", \"M_option\": \"{\\\"M\\\": \\\"-\\\", \\\"M_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"s_option\": \"{\\\"s\\\": \\\"-\\\", \\\"s_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"n_option\": \"{\\\"n_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"n\\\": \\\"-\\\"}\", \"input\": \"null\", \"F_option\": \"{\\\"F_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"F\\\": \\\"-\\\"}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "9": {
+            "annotation": "", 
+            "id": 9, 
+            "input_connections": {
+                "input": {
+                    "id": 8, 
+                    "output_name": "output1"
+                }, 
+                "input_dataset": {
+                    "id": 6, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox_Partition", 
+            "outputs": [
+                {
+                    "name": "out_positive_file", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "out_negative_file", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1389, 
+                "top": 761
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "partition", 
+            "tool_state": "{\"input_dataset\": \"null\", \"input\": \"null\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "10": {
+            "annotation": "", 
+            "id": 10, 
+            "input_connections": {
+                "input": {
+                    "id": 9, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "text"
+                }
+            ], 
+            "position": {
+                "left": 988, 
+                "top": 991
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "museqbox_tool", 
+            "tool_state": "{\"__page__\": 0, \"q\": \"\\\"True\\\"\", \"M_option\": \"{\\\"M\\\": \\\"-\\\", \\\"M_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"s_option\": \"{\\\"s\\\": \\\"1\\\", \\\"s_option_selector\\\": \\\"advanced\\\", \\\"__current_case__\\\": 1}\", \"n_option\": \"{\\\"n_option_selector\\\": \\\"advanced\\\", \\\"__current_case__\\\": 1, \\\"n\\\": \\\"1\\\"}\", \"input\": \"null\", \"F_option\": \"{\\\"F_option_selector\\\": \\\"advanced\\\", \\\"__current_case__\\\": 1, \\\"F\\\": \\\"10 0 0 90.0 60.0\\\"}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "11": {
+            "annotation": "", 
+            "id": 11, 
+            "input_connections": {
+                "query": {
+                    "id": 9, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "BLAST+ blastx", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 613, 
+                "top": 1348
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "ncbi_blastx_wrapper", 
+            "tool_state": "{\"out_format\": \"\\\"-outfmt 6\\\"\", \"__page__\": 0, \"evalue_cutoff\": \"\\\"1e-20\\\"\", \"adv_opts\": \"{\\\"matrix\\\": \\\"\\\", \\\"adv_opts_selector\\\": \\\"basic\\\", \\\"ungapped\\\": \\\"\\\", \\\"filter_query\\\": \\\"\\\", \\\"word_size\\\": \\\"\\\", \\\"__current_case__\\\": 0, \\\"strand\\\": \\\"\\\", \\\"max_hits\\\": \\\"\\\"}\", \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"db\\\", \\\"__current_case__\\\": 0, \\\"database\\\": \\\"/home/kasia/Pulpit/kasia/KASIA/UW-bioinf/Architektura_projektow_bioinf/projekt_architektura/bazy/UniRef90-Viridiplantae\\\"}\", \"query\": \"null\"}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "12": {
+            "annotation": "", 
+            "id": 12, 
+            "input_connections": {
+                "input": {
+                    "id": 10, 
+                    "output_name": "output1"
+                }, 
+                "input_dataset": {
+                    "id": 9, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox_Partition", 
+            "outputs": [
+                {
+                    "name": "out_positive_file", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "out_negative_file", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1402, 
+                "top": 939
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "partition", 
+            "tool_state": "{\"input_dataset\": \"null\", \"input\": \"null\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "13": {
+            "annotation": "", 
+            "id": 13, 
+            "input_connections": {
+                "input": {
+                    "id": 11, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "text"
+                }
+            ], 
+            "position": {
+                "left": 992, 
+                "top": 1350
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "museqbox_tool", 
+            "tool_state": "{\"__page__\": 0, \"q\": \"\\\"True\\\"\", \"M_option\": \"{\\\"M\\\": \\\"-\\\", \\\"M_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"s_option\": \"{\\\"s\\\": \\\"-\\\", \\\"s_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"n_option\": \"{\\\"n_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"n\\\": \\\"-\\\"}\", \"input\": \"null\", \"F_option\": \"{\\\"F_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"F\\\": \\\"-\\\"}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "14": {
+            "annotation": "", 
+            "id": 14, 
+            "input_connections": {
+                "input": {
+                    "id": 12, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "text"
+                }
+            ], 
+            "position": {
+                "left": 990, 
+                "top": 1158
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "museqbox_tool", 
+            "tool_state": "{\"__page__\": 0, \"q\": \"\\\"True\\\"\", \"M_option\": \"{\\\"M\\\": \\\"10 50\\\", \\\"M_option_selector\\\": \\\"advanced\\\", \\\"__current_case__\\\": 1}\", \"s_option\": \"{\\\"s\\\": \\\"-\\\", \\\"s_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"n_option\": \"{\\\"n_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"n\\\": \\\"-\\\"}\", \"input\": \"null\", \"F_option\": \"{\\\"F_option_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0, \\\"F\\\": \\\"-\\\"}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "15": {
+            "annotation": "", 
+            "id": 15, 
+            "input_connections": {
+                "input": {
+                    "id": 13, 
+                    "output_name": "output1"
+                }, 
+                "input_dataset": {
+                    "id": 9, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox_Partition", 
+            "outputs": [
+                {
+                    "name": "out_positive_file", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "out_negative_file", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1386, 
+                "top": 1329
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "partition", 
+            "tool_state": "{\"input_dataset\": \"null\", \"input\": \"null\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "16": {
+            "annotation": "", 
+            "id": 16, 
+            "input_connections": {
+                "input": {
+                    "id": 14, 
+                    "output_name": "output1"
+                }, 
+                "input_dataset": {
+                    "id": 12, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "MuSeqBox_Partition", 
+            "outputs": [
+                {
+                    "name": "out_positive_file", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "out_negative_file", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1389, 
+                "top": 1127
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "partition", 
+            "tool_state": "{\"input_dataset\": \"null\", \"input\": \"null\", \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "17": {
+            "annotation": "", 
+            "id": 17, 
+            "input_connections": {
+                "query": {
+                    "id": 15, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "BLAST+ rpstblastn", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 611, 
+                "top": 1596
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "ncbi_rpstblastn_wrapper", 
+            "tool_state": "{\"out_format\": \"\\\"-outfmt 6\\\"\", \"evalue_cutoff\": \"\\\"1e-10\\\"\", \"__page__\": 0, \"db_opts\": \"{\\\"db_opts_selector\\\": \\\"db\\\", \\\"__current_case__\\\": 0, \\\"database\\\": \\\"/home/kasia/Pulpit/kasia/KASIA/UW-bioinf/Architektura_projektow_bioinf/projekt_architektura/bazy/Smart_LE/Smart\\\"}\", \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"ungapped\\\": \\\"\\\", \\\"filter_query\\\": \\\"\\\", \\\"word_size\\\": \\\"\\\", \\\"__current_case__\\\": 0, \\\"strand\\\": \\\"\\\", \\\"max_hits\\\": \\\"\\\"}\", \"blast_type\": \"\\\"megablast\\\"\", \"query\": \"null\"}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "18": {
+            "annotation": "", 
+            "id": 18, 
+            "input_connections": {
+                "blast_file": {
+                    "id": 17, 
+                    "output_name": "output1"
+                }, 
+                "in_file": {
+                    "id": 15, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "Filter FASTA using BLAST output", 
+            "outputs": [
+                {
+                    "name": "out_positive_file", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "out_negative_file", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1124, 
+                "top": 1598
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "blast_filter_fasta", 
+            "tool_state": "{\"blast_file\": \"null\", \"blast_col\": \"\\\"1\\\"\", \"in_file\": \"null\", \"__page__\": 0}", 
+            "tool_version": "0.0.1", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "19": {
+            "annotation": "", 
+            "id": 19, 
+            "input_connections": {
+                "AA": {
+                    "id": 15, 
+                    "output_name": "out_positive_file"
+                }, 
+                "BC": {
+                    "id": 6, 
+                    "output_name": "out_positive_file"
+                }, 
+                "CD": {
+                    "id": 18, 
+                    "output_name": "out_positive_file"
+                }, 
+                "FL": {
+                    "id": 12, 
+                    "output_name": "out_positive_file"
+                }, 
+                "PC": {
+                    "id": 16, 
+                    "output_name": "out_positive_file"
+                }, 
+                "RA": {
+                    "id": 9, 
+                    "output_name": "out_positive_file"
+                }, 
+                "VC": {
+                    "id": 3, 
+                    "output_name": "out_positive_file"
+                }, 
+                "input_data": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "not_FL": {
+                    "id": 12, 
+                    "output_name": "out_negative_file"
+                }, 
+                "not_PC": {
+                    "id": 16, 
+                    "output_name": "out_negative_file"
+                }
+            }, 
+            "inputs": [], 
+            "name": "mRNA_Markup_Summary", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "text"
+                }
+            ], 
+            "position": {
+                "left": 2126, 
+                "top": 706
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "mRNA_Markup_Summary", 
+            "tool_state": "{\"AA\": \"null\", \"__page__\": 0, \"VC\": \"null\", \"BC\": \"null\", \"not_PC\": \"null\", \"not_FL\": \"null\", \"CD\": \"null\", \"PC\": \"null\", \"RA\": \"null\", \"input_data\": \"null\", \"FL\": \"null\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }
+    }
+}
