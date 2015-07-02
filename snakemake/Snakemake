@@ -1,3 +1,10 @@
+#just create example files for input of first (b) rule
+for i in ["A","B","C"]:
+    open(i+".in", "w").close()	
+#------
+
+#simple Snakemake script
+
 rule all:
    input: "A.txt", "B.txt", "C.txt"
 
