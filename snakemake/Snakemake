@@ -1,0 +1,19 @@
+rule all:
+   input: "A.txt", "B.txt", "C.txt"
+
+rule a:
+     input: "{sample}.inter"
+     output: "{sample}.txt"
+     shell : "echo 'kasia {input}' > {output}"
+
+def write2file(filenames, content):
+    print(filenames)
+    for i in filenames:
+        f = open(i,'w')
+        f.write(content)
+        f.close()
+
+rule b:
+     input: "{sample}.in"
+     output: "{sample}.inter"
+     run: write2file(output,"cos")
