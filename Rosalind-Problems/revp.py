@@ -9,22 +9,20 @@ from Bio import SeqIO #biopython
         
 def _reverse_complement(l):
     complements = {"A":"T","T":"A","G":"C","C":"G"}
-    return ''.join([complements[i] for i in l][::-1])
+    return(''.join([complements[i] for i in l][::-1]))
 
     
 def _palindroms(seq):
     
     results=[]
 
-    for i in xrange(1,len(seq)):
-      
-      for j in xrange(1, 6):
-	if i>=j and i+j+2<len(seq):
-	    
-	    if seq[i-j:i+1]==_reverse_complement(seq[i+1:i+j+2]):
-	      results.append((i-j+1,len(seq[i-j:i+j+2])))
-	      
-    return results
+    for i in range(1,len(seq)):
+        for j in range(1, 6):
+	        if i>=j and i+j+2<len(seq):
+	            if seq[i-j:i+1]==_reverse_complement(seq[i+1:i+j+2]):
+	                results.append((i-j+1,len(seq[i-j:i+j+2])))
+
+    return(results)
      
 
 
@@ -35,4 +33,4 @@ if __name__ == "__main__":
 
       palindroms = sorted(_palindroms(str(seq)), key=lambda i: i[0])
       for i in palindroms:
-	      print i[0],i[1]
+	      print(i[0],i[1])
